@@ -5,7 +5,7 @@ library(FLAREr)
 library(tidyverse)
 library(lubridate)
 
-tmp <- "D:/admin/Documents/FLAREr"
+tmp <- getwd()
 # file.copy(system.file("extdata", package = "FLAREr"), tmp, recursive = TRUE)
 lake_directory <- file.path(tmp, "extdata")
 forecast_site <- c("splk")
@@ -13,7 +13,7 @@ forecast_site <- c("splk")
 configure_run_file <- paste0("configure_run_",forecast_site,".yml")
 config_set_name <- "default"
 
-FLAREr::ignore_sigpipe()
+# FLAREr::ignore_sigpipe()
 
 config <- FLAREr::set_configuration(configure_run_file, lake_directory, config_set_name = config_set_name)
 config <- FLAREr::get_restart_file(config, lake_directory)
